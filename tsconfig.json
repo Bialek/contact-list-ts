@@ -17,10 +17,11 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "declaration": true
   },
   "include": ["src"]
 }
