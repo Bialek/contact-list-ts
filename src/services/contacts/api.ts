@@ -1,3 +1,4 @@
+import { Person } from "types";
 import mockData from "./mockData.json";
 
 let cursor = -1;
@@ -7,7 +8,7 @@ function delay(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(() => resolve(), time));
 }
 
-export default async function apiData() {
+export default async function apiData(): Promise<Person[]> {
   await delay(1000);
   if (Math.random() > 0.7) {
     throw new Error("Something went wrong");
