@@ -10,14 +10,19 @@ function ContactList(): JSX.Element {
   const [data, setData] = React.useState<Person[]>([]);
   const [selected, setSelected] = React.useState([]);
 
-  React.useEffect((): void => {
+  const requestData = React.useCallback((): void => {
     dispatch(contactsGetAll((response: Person[]): void => setData(response)));
+  }, []);
+
+  React.useEffect((): void => {
+    requestData()
   }, []);
 
   return (
     <div>
       <div className="selected">Selected contacts: {selected.length}</div>
       <div className="list">
+        qweq qweqwe qwe
         {data.map(
           (personInfo: Person): JSX.Element => (
             <PersonInfo key={personInfo.id} data={personInfo} />
