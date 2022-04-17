@@ -8,7 +8,7 @@ type Props = {
   };
 };
 
-function PersonInfo(props: Props) {
+function PersonInfo(props: Props): JSX.Element {
   const { data } = props;
   return (
     <div
