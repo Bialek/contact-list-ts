@@ -1,3 +1,4 @@
+import Button from "components/atoms/button";
 import PersonInfo from "components/molecules/person-info";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -11,18 +12,26 @@ function ContactList(): JSX.Element {
   const [selected, setSelected] = React.useState([]);
 
   const requestData = React.useCallback((): void => {
-    dispatch(contactsGetAll((response: Person[]): void => setData(response)));
-  }, []);
+    dispatch(
+      contactsGetAll((response: Person[]): void =>
+        setData((prevState: Person[]): Person[] => [...prevState, ...response])
+      )
+    );
+  }, [dispatch]);
 
   React.useEffect((): void => {
-    requestData()
-  }, []);
+    requestData();
+  }, [requestData]);
 
   return (
     <div>
       <div className="selected">Selected contacts: {selected.length}</div>
+      <Button
+        onClickHandler={(): void => requestData()}
+        text="Load more" //it's should comming from translations
+      />
+
       <div className="list">
-        qweq qweqwe qwe
         {data.map(
           (personInfo: Person): JSX.Element => (
             <PersonInfo key={personInfo.id} data={personInfo} />
