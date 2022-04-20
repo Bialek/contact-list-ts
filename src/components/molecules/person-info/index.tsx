@@ -4,7 +4,7 @@ import PersonAcronym from "components/atoms/person-acronym";
 import { StyledPersonInfo } from "./person-info.style";
 import { Person } from "types";
 import Text from "components/atoms/text";
-import FlexDiv from "components/atoms/flex-div";
+import Flex from "components/atoms/flex";
 
 type Props = {
   data: Person;
@@ -12,9 +12,9 @@ type Props = {
 
 const PersonInfo = ({ data }: Props): JSX.Element => (
   <StyledPersonInfo>
-    <FlexDiv gap="m">
+    <Flex gap="m">
       <PersonAcronym name={data.firstNameLastName} />
-      <FlexDiv direction="column">
+      <Flex direction="column">
         <Text weight={900} size="l" text={data.firstNameLastName} />
         <Text
           weight={600}
@@ -31,8 +31,8 @@ const PersonInfo = ({ data }: Props): JSX.Element => (
           textColor="grey20"
           marginLeft="s"
         />
-      </FlexDiv>
-    </FlexDiv>
+      </Flex>
+    </Flex>
   </StyledPersonInfo>
 );
 
