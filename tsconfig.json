@@ -5,7 +5,10 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
@@ -17,11 +20,13 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "resolveJsonModule": true,
-    "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "noFallthroughCasesInSwitch": true,
-    "declaration": true
+    "declaration": true,
+    "baseUrl": "src"
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
