@@ -2,7 +2,7 @@ import { Person } from "types";
 import mockData from "./mockData.json";
 
 let cursor = -1;
-const size = 10;
+const size = 1000;
 
 function delay(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(() => resolve(), time));
