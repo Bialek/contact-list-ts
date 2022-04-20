@@ -9,7 +9,9 @@ function PersonAcronym({ name }: Props): JSX.Element {
   const acronym = useMemo<string>((): string => {
     const splittedName = name.split(" ");
 
-    return `${splittedName[0][0] || ""}${splittedName[1][0] || ""}`;
+    return `${(splittedName[0] && splittedName[0][0]) || ""}${
+      (splittedName[1] && splittedName[1][0]) || ""
+    }`;
   }, [name]);
   return <StyledPersonAcronym>{acronym}</StyledPersonAcronym>;
 }

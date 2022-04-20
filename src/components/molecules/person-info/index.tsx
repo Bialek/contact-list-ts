@@ -7,19 +7,28 @@ import Text from "components/atoms/text";
 import Flex from "components/atoms/flex";
 
 type Props = {
-  data: Person;
+  person: Person;
+  onClickCallback: (person: Person) => void;
+  isSelected?: boolean;
 };
 
-const PersonInfo = ({ data }: Props): JSX.Element => (
-  <StyledPersonInfo>
+const PersonInfo = ({
+  person,
+  onClickCallback,
+  isSelected,
+}: Props): JSX.Element => (
+  <StyledPersonInfo
+    onClick={(): void => onClickCallback(person)}
+    isSelected={isSelected}
+  >
     <Flex gap="m">
-      <PersonAcronym name={data.firstNameLastName} />
+      <PersonAcronym name={person.firstNameLastName} />
       <Flex direction="column">
-        <Text weight={900} size="l" text={data.firstNameLastName} />
+        <Text weight={900} size="l" text={person.firstNameLastName} />
         <Text
           weight={600}
           size="m"
-          text={data.jobTitle}
+          text={person.jobTitle}
           textTransform="uppercase"
           textColor="red10"
           marginBottom="xl"
@@ -27,7 +36,7 @@ const PersonInfo = ({ data }: Props): JSX.Element => (
         <Text
           weight={400}
           size="m"
-          text={data.emailAddress}
+          text={person.emailAddress}
           textColor="grey20"
           marginLeft="s"
         />
