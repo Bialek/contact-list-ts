@@ -1,35 +1,39 @@
 import React from "react";
 
+import PersonAcronym from "components/atoms/person-acronym";
+import { StyledPersonInfo } from "./person-info.style";
+import { Person } from "types";
+import Text from "components/atoms/text";
+import FlexDiv from "components/atoms/flex-div";
+
 type Props = {
-  data: {
-    firstNameLastName: string;
-    jobTitle: string;
-    emailAddress: string;
-  };
+  data: Person;
 };
 
-function PersonInfo(props: Props): JSX.Element {
-  const { data } = props;
-  return (
-    <div
-      style={{
-        display: "flex",
-        height: "100px",
-        justifyContent: "center",
-        flexDirection: "column",
-        padding: "32px",
-        boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.15)",
-        margin: "10px 0",
-        background: "#fff",
-        cursor: "pointer",
-      }}
-      className="person-info"
-    >
-      <div className="firstNameLastName">{data.firstNameLastName}</div>
-      <div className="jobTitle">{data.jobTitle}</div>
-      <div className="emailAddress">{data.emailAddress}</div>
-    </div>
-  );
-}
+const PersonInfo = ({ data }: Props): JSX.Element => (
+  <StyledPersonInfo>
+    <FlexDiv gap="m">
+      <PersonAcronym name={data.firstNameLastName} />
+      <FlexDiv direction="column">
+        <Text weight={900} size="l" text={data.firstNameLastName} />
+        <Text
+          weight={600}
+          size="m"
+          text={data.jobTitle}
+          textTransform="uppercase"
+          textColor="red10"
+          marginBottom="xl"
+        />
+        <Text
+          weight={400}
+          size="m"
+          text={data.emailAddress}
+          textColor="grey20"
+          marginLeft="s"
+        />
+      </FlexDiv>
+    </FlexDiv>
+  </StyledPersonInfo>
+);
 
 export default PersonInfo;

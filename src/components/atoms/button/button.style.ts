@@ -9,7 +9,7 @@ export interface StyledButtonProps {
 export const StyledButton = styled.button<StyledButtonProps>`
   background: ${(props): string => props.theme.colors.white};
   color: ${(props) => props.theme.colors[props.color ?? "black"]};
-  size: ${(props) => props.theme.fontSizes[props.size ?? "m"]};
+  font-size: ${(props) => props.theme.fontSizes[props.size ?? "m"]};
   cursor: pointer;
   box-shadow: ${(props) => props.theme.boxShadow};
   border: 2px solid ${(props) => props.theme.colors.red20};

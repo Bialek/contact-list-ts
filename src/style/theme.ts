@@ -10,7 +10,7 @@ export type Colors = {
 };
 
 const colors: Colors = {
-  red10: "#333333",
+  red10: "#e74c3c",
   red20: "#e74d3cae",
   white: "#ffffff",
   black: "#333333",
@@ -24,22 +24,25 @@ export type Sizes = {
   m: string;
   l: string;
   xl: string;
+  xxl: string;
 };
 
 const fontSizes: Sizes = {
-  xs: "0.6rem",
-  s: "0.8rem",
-  m: "1rem",
-  l: "1.4rem",
-  xl: "1.8rem",
+  xs: "0.3rem",
+  s: "0.6rem",
+  m: "0.9rem",
+  l: "1.2rem",
+  xl: "1.5rem",
+  xxl: "1.8rem",
 };
 
 const spaces: Sizes = {
-  xs: "0.6rem",
-  s: "1.2rem",
-  m: "1.8rem",
-  l: "2.5rem",
-  xl: "3rem",
+  xs: "0.4rem",
+  s: "0.8rem",
+  m: "1.2rem",
+  l: "1.6rem",
+  xl: "2rem",
+  xxl: "2.4rem",
 };
 
 const breakpoints = ["31.25em", "43.75em", "46.875em"];
