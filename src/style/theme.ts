@@ -45,7 +45,17 @@ const spaces: Sizes = {
   xxl: "2.4rem",
 };
 
-const breakpoints = ["31.25em", "43.75em", "46.875em"];
+export type Breakpoints = {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+};
+
+const breakpoints: Breakpoints = {
+  mobile: "375px",
+  tablet: "768px",
+  desktop: "1024px",
+};
 
 const borderRadius = "20px";
 

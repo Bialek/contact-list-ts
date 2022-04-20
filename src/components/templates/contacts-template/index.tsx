@@ -4,6 +4,7 @@ import PersonInfo from "components/molecules/person-info";
 import { useDispatch } from "react-redux";
 import { contactsGetAll } from "store/actions/contacts";
 import { Person } from "types";
+import ContactList from "components/organisms/contacts-list";
 
 function ContactsTemplate(): JSX.Element {
   const dispatch = useDispatch();
@@ -31,13 +32,7 @@ function ContactsTemplate(): JSX.Element {
         text="Load more" //it's should comming from translations
       />
 
-      <div className="list">
-        {data.map(
-          (personInfo: Person): JSX.Element => (
-            <PersonInfo key={personInfo.id} data={personInfo} />
-          )
-        )}
-      </div>
+      <ContactList collection={data} />
     </div>
   );
 }
