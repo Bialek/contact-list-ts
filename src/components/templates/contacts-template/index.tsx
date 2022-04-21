@@ -26,7 +26,7 @@ function ContactsTemplate(): JSX.Element {
         collection={filteredContactsList}
         onClickCallback={selectContactCallback}
       />
-      <Flex gap="l">
+      <Flex gap="l" alignItems="center">
         <Button
           onClickHandler={requestContactsList}
           text="Load more" //it's should comming from translations
