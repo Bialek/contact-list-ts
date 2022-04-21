@@ -2,6 +2,8 @@ import React from "react";
 import Button from "components/atoms/button";
 import ContactList from "components/organisms/contacts-list";
 import useContacts from "./useContacts";
+import Loader from "components/atoms/loader";
+import Flex from "components/atoms/flex";
 
 function ContactsTemplate(): JSX.Element {
   const {
@@ -24,10 +26,14 @@ function ContactsTemplate(): JSX.Element {
         collection={filteredContactsList}
         onClickCallback={selectContactCallback}
       />
-      <Button
-        onClickHandler={requestContactsList}
-        text="Load more" //it's should comming from translations
-      />
+      <Flex gap="l">
+        <Button
+          onClickHandler={requestContactsList}
+          text="Load more" //it's should comming from translations
+          isDisabled={isLoading}
+        />
+        {isLoading && <Loader />}
+      </Flex>
     </div>
   );
 }

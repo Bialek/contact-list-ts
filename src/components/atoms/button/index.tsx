@@ -6,8 +6,20 @@ interface Props extends StyledButtonProps {
   onClickHandler: () => void;
 }
 
-const Button = ({ color, size, text, onClickHandler }: Props): JSX.Element => (
-  <StyledButton size={size} color={color} onClick={onClickHandler}>
+const Button = ({
+  color,
+  size,
+  text,
+  onClickHandler,
+  isDisabled,
+}: Props): JSX.Element => (
+  <StyledButton
+    size={size}
+    color={color}
+    onClick={isDisabled ? undefined : onClickHandler}
+    disabled={isDisabled}
+    isDisabled={isDisabled}
+  >
     {text}
   </StyledButton>
 );

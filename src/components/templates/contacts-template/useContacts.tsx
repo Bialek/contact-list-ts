@@ -3,7 +3,16 @@ import { useDispatch } from "react-redux";
 import { contactsGetAll } from "store/actions/contacts";
 import { Person } from "types";
 
-function useContacts() {
+type HookReturningType = {
+  isLoading: boolean;
+  filteredContactsList: Person[];
+  requestContactsList: () => void;
+  selectedContactsList: Person[];
+  selectContactCallback: (selectedContact: Person) => void;
+  unselectContactCallback: (selectedContact: Person) => void;
+}
+
+function useContacts(): HookReturningType {
   const dispatch = useDispatch();
 
   const [contactsList, setContactsList] = useState<Person[]>([]);
