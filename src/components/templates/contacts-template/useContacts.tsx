@@ -10,7 +10,7 @@ type HookReturningType = {
   selectedContactsList: Person[];
   selectContactCallback: (selectedContact: Person) => void;
   unselectContactCallback: (selectedContact: Person) => void;
-}
+};
 
 function useContacts(): HookReturningType {
   const dispatch = useDispatch();
@@ -24,21 +24,26 @@ function useContacts(): HookReturningType {
 
   const requestContactsList = useCallback((): void => {
     setIsLoading(true);
-    dispatch(
-      contactsGetAll((response: Person[]): void => {
-        setContactsList((prevState: Person[]): Person[] => [
-          ...prevState,
-          ...response,
-        ]);
+    const onSuccessCalback = (response: Person[]): void => {
+      setContactsList((prevState: Person[]): Person[] => [
+        ...prevState,
+        ...response,
+      ]);
 
-        setIsLoading(false);
-      })
+      setIsLoading(false);
+    };
+    const onErrorCallback = (): void => setIsLoading(false);
+
+    dispatch(
+      contactsGetAll(contactsList.length, onSuccessCalback, onErrorCallback)
     );
-  }, [dispatch, setIsLoading]);
+  }, [dispatch, setIsLoading, contactsList.length]);
 
   useEffect((): void => {
-    requestContactsList();
-  }, [requestContactsList]);
+    if (contactsList.length === 0) {
+      requestContactsList();
+    }
+  }, [requestContactsList, contactsList.length]);
 
   const selectContactCallback = useCallback((selectedContact: Person): void => {
     setSelectedContactsCollection(

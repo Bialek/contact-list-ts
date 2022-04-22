@@ -7,6 +7,7 @@ export type Colors = {
   black: string;
   grey10: string;
   grey20: string;
+  green: string;
 };
 
 const colors: Colors = {
@@ -16,6 +17,7 @@ const colors: Colors = {
   black: "#333333",
   grey10: "#f4f4f4",
   grey20: "#666666",
+  green: "#4cb944",
 };
 
 export type Sizes = {

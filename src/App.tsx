@@ -5,6 +5,7 @@ import ContactsPage from "components/pages/contacts-page";
 import { theme } from "./style/theme";
 import { GlobalStyle } from "style/global.style";
 import { ThemeProvider } from "styled-components";
+import NotificationsContainer from "components/organisms/notifications-container";
 
 function App(): JSX.Element {
   const store = configureStore();
@@ -14,6 +15,7 @@ function App(): JSX.Element {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <ContactsPage />
+        <NotificationsContainer />
       </ThemeProvider>
     </Provider>
   );
