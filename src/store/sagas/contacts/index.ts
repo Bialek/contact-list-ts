@@ -1,17 +1,24 @@
-import { call, takeEvery } from "redux-saga/effects";
+import { call, takeEvery, put } from "redux-saga/effects";
 import { SagaIterator } from "redux-saga";
-import { Action, Person } from "types";
+import { Action, NotificationType, Person } from "types";
 import Constants from "store/constants";
 import ContactService from "services/contacts";
+import { notificationPush } from "store/actions/notification";
 
-function* getAllContacts(action: Action<Person[], undefined>): SagaIterator {
+function* getAllContacts(action: Action<Person[], number>): SagaIterator {
   try {
-    const response: Person[] | undefined = yield call(ContactService.getAll);
+    const response: Person[] | undefined = yield call(
+      ContactService.getAll,
+      action.payload as number
+    );
     if (response && action.onSuccessCallback) {
       yield call(action.onSuccessCallback, response);
+      yield put(
+        notificationPush("Contacts downloaded", NotificationType.success)
+      );
     }
   } catch (error) {
-    //error
+    yield put(notificationPush(`${error}`, NotificationType.error));
   }
 }
 

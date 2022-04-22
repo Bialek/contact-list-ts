@@ -7,17 +7,17 @@ export interface Person {
 
 export type Action<R, P> = {
   type: string;
-  onSuccessCallback?: (response: R) => void;
   payload?: P;
+  onSuccessCallback?: (response: R) => void;
+  onErrorCallback?: (response: R) => void;
 };
 
 export enum NotificationType {
   success = "success",
   error = "error",
-  info = "info",
 }
 
-export interface Notification {
+export interface NotificationInfo {
   type: NotificationType;
   text: string;
   id: string;
