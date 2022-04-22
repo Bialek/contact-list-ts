@@ -9,7 +9,7 @@ export type Action<R, P> = {
   type: string;
   payload?: P;
   onSuccessCallback?: (response: R) => void;
-  onErrorCallback?: (response: R) => void;
+  onErrorCallback?: () => void;
 };
 
 export enum NotificationType {

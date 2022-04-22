@@ -1,4 +1,4 @@
-import { call, takeEvery, put } from "redux-saga/effects";
+import { call, takeLatest, put } from "redux-saga/effects";
 import { SagaIterator } from "redux-saga";
 import { Action, NotificationType, Person } from "types";
 import Constants from "store/constants";
@@ -18,10 +18,14 @@ function* getAllContacts(action: Action<Person[], number>): SagaIterator {
       );
     }
   } catch (error) {
+    if (action.onErrorCallback) {
+      yield call(action.onErrorCallback);
+    }
+
     yield put(notificationPush(`${error}`, NotificationType.error));
   }
 }
 
 export default function* contactsSaga(): SagaIterator {
-  yield takeEvery(Constants.GET_ALL_CONTACTS, getAllContacts);
+  yield takeLatest(Constants.GET_ALL_CONTACTS, getAllContacts);
 }
