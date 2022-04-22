@@ -9,11 +9,10 @@ declare global {
   }
 }
 
-const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
-
 export default function configureStore(): Store {
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
 
   const store: Store = createStore(
     reducers,
